@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Grading System</title>
+</head>
+
+<body>
+    <h1>Student Grading System</h1>
+
+    <!-- Button to generate grades -->
+    <button id="generateGradesButton">Generate Grades</button>
+
+    <h2>Student Grades:</h2>
+    <div id="gradesOutput"></div>
+
+    <script>
+        // List of students with their grades
+        const students = [
+            { name: "Mritunjay", grade: 95 },
+            { name: "Nirgun", grade: 90 },
+            { name: "Pooja", grade: 85 },
+            { name: "Prashant", grade: 75 },
+            { name: "Raj", grade: 69 },
+            { name: "Rajesh", grade: 50 }
+        ];
+
+        // Function to determine grade based on score
+        function getGrade(grade) {
+            if (grade >= 90) {
+                return "A";
+            } else if (grade >= 80) {
+                return "B";
+            } else if (grade >= 70) {
+                return "C";
+            } else if (grade >= 60) {
+                return "D";
+            } else {
+                return "F";
+            }
+        }
+
+        // Function to generate grades for each student
+        function generateGrades() {
+            const outputDiv = document.getElementById("gradesOutput");
+            outputDiv.innerHTML = ""; // Clear previous output
+
+            // Loop through the students array and display each student's grade
+            for (let i = 0; i < students.length; i++) {
+                const student = students[i]; // Get the student object
+                const grade = getGrade(student.grade); // Determine the grade based on score
+                outputDiv.innerHTML += `${student.name}: ${grade}<br>`; // Display student's name and grade
+            }
+        }
+
+        // Add event listener to the button to trigger the generateGrades function on click
+        document.getElementById("generateGradesButton").addEventListener("click", generateGrades);
+    </script>
+
+</body>
+
+</html>
